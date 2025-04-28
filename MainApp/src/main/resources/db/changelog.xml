@@ -1,0 +1,57 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <property name="uuid_type" value="uuid" dbms="h2"/>
+    <property name="uuid_function" value="RANDOM_UUID()" dbms="h2"/>
+<!--    <property name="user_id" value="da0a0bf9-d1c7-4011-8092-7d960edc235e" dbms="h2"/>-->
+
+<!--    <changeSet id="13" author="justas">-->
+<!--        <createTable tableName="useraccount">-->
+<!--            <column name="user_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="varchar(255)"/>-->
+<!--            <column name="surname" type="varchar(255)"/>-->
+<!--            <column name="email" type="varchar(255)"/>-->
+<!--            <column name="password" type="varchar"/>-->
+<!--            <column name="role" type="varchar(255)"/>-->
+<!--            <column name="locked" type="boolean"/>-->
+<!--            <column name="enabled" type="boolean"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="14" author="justas">-->
+<!--        <insert tableName="useraccount">-->
+<!--            <column name="user_id" value="1"/>-->
+<!--            <column name="name" value="Jonas"/>-->
+<!--            <column name="surname" value="Testauskas"/>-->
+<!--            <column name="email" value="testas@test.lt"/>-->
+<!--        </insert>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="sequence12" author="justas">-->
+<!--        <dropTable tableName="confirmation_token"/>-->
+<!--        <createSequence sequenceName="USERACCOUNT_SEQ" startValue="1" incrementBy="1"/>-->
+<!--        <addColumn tableName="confirmation_token">-->
+<!--            <column name="user_id" type="bigint"/>-->
+<!--        </addColumn>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="18" author="justas">-->
+<!--        <createTable tableName="auth_token">-->
+<!--            <column name="auth_token_id" type="bigint" autoIncrement="true">-->
+<!--                <constraints primaryKey="true"/>-->
+<!--            </column>-->
+<!--            <column name="token" type="varchar(255)">-->
+<!--                <constraints unique="true"/>-->
+<!--            </column>-->
+<!--            <column name="tokenType" type="varchar(255)" defaultValue="BEARER"/>-->
+<!--            <column name="revoked" type="boolean"/>-->
+<!--            <column name="expired" type="boolean"/>-->
+<!--            <column name="user_id" type="bigint"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet id="19" author="justas">-->
+<!--        <renameColumn tableName="auth_token"-->
+<!--                      oldColumnName="tokenType"-->
+<!--                      newColumnName="token_type"-->
+<!--                      columnDataType="varchar(255)"/>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

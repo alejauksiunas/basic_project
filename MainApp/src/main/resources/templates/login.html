@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link th:href="@{/main.css}" href="/main.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>Login</h1>
+    <div th:if="${unauthorized}">
+        <p style="color: red;" th:text="${unauthorized}"></p>
+    </div>
+    <div th:if="${confirm}">
+        <p style="color: red;">Please confirm your email and login.</p>
+    </div>
+    <div>
+        <form action="/api/auth/login" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <a href="/api/signinup"><button>Back</button></a>
+</div>
+</body>
+</html>

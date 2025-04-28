@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Application</title>
+    <link th:href="@{/main.css}" href="/main.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>Generic Application</h1>
+    <p>Welcome to generic application, a lot of stuff to do here...</p>
+    <button onclick="downloadDocument()">Download user data</button>
+</div>
+<script>
+    function downloadDocument() {
+        var email = prompt("Please enter your email");
+        if (!email) {
+            return;
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/rest/user/document', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.responseType = 'blob';
+
+        xhr.onload = function () {
+            if (this.status === 200) {
+                var blob = new Blob([this.response], { type: 'application/pdf' });
+                var url = window.URL.createObjectURL(blob);
+
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'userData.pdf';
+                a.style.display = 'none';
+
+                document.body.appendChild(a);
+                a.click();
+
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            }
+        };
+        var requestData = { email: email };
+        xhr.send(JSON.stringify(requestData));
+    }
+</script>
+</body>
+</html>

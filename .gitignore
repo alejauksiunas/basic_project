@@ -1,0 +1,32 @@
+# Ignore IDEA files
+.idea/
+*.iml
+
+# Ignore node modules (frontend project)
+frontend/node_modules/
+
+# Ignore Java target build directories
+**/target/
+
+# Ignore Maven wrapper files if generated
+.mvn/
+mvnw
+mvnw.cmd
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore env or sensitive config files
+*.env
+
+# Ignore OS files
+*.log
+
+# Ignore other IDE-specific
+*.classpath
+*.project
+*.settings/
+
+# Ignore VSCode folder if used
+.vscode/

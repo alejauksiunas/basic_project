@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+    <link th:href="@{/main.css}" href="/main.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div th:if="${email}" id="confirmationDiv">
+        <h1>Email confirmation</h1>
+        <p style="color: red;" th:text="${email}"></p>
+        <label for="emailSend">Email:</label>
+        <input type="email" id="emailSend" name="emailSend" required>
+        <button type="submit" onclick="sendEmail()">Send Confirmation Email</button>
+        <a href="/api/login"><button>Back</button></a>
+    </div>
+    <div th:if="${email}" id="confirmationSentDiv" style="display:none;">
+        <h1>Email confirmation</h1>
+        <p>Email sent, check your inbox.</p>
+        <a href="/api/login"><button>Back</button></a>
+    </div>
+    <div th:if="${expired}">
+        <h1>Email confirmation</h1>
+        <p style="color: red;" th:text="${expired}"></p>`
+        <a href="/api/login"><button>Back</button></a>
+    </div>
+    <div th:if="${confirmed}">
+        <h1>Email confirmed, go back to login.</h1>
+        <a href="/api/login"><button>Login</button></a>
+    </div>
+</div>
+<script>
+    function sendEmail() {
+        var email = document.getElementById("emailSend").value;
+        if (email !== null && email !== "") {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/api/verify/send?email=" + email, true);
+            xhr.send();
+            document.getElementById("confirmationDiv").style.display = "none";
+            document.getElementById("confirmationSentDiv").style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>
